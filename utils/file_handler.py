@@ -2,7 +2,8 @@ import os
 import glob
 
 def find_images(input_path):
-    images = None
+    # Recursively search all images in input folder
+    images = glob.glob(os.path.join(input_path, '**', '*.jp*g'), recursive=True)
     return images
 
 def create_output_folder(input_path):
