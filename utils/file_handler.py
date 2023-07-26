@@ -7,7 +7,9 @@ def find_images(input_path):
     return images
 
 def create_output_folder(input_path):
-    output_path = None
+    # Create output folder
+    output_path = input_path + '_redim'
+    os.makedirs(output_path, exist_ok=True)
     return output_path
 
 def build_output_path(image_path, input_path, output_path):
