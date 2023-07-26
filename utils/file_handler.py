@@ -13,5 +13,13 @@ def create_output_folder(input_path):
     return output_path
 
 def build_output_path(image_path, input_path, output_path):
-    image_output_path = None
+    # Build output path based on original folder structure
+    original_path = os.path.relpath(os.path.dirname(image_path), input_path)
+    original_name = os.path.basename(image_path)
+    new_path = os.path.join(output_path, original_path)
+    image_output_path = os.path.join(new_path, original_name)
+
+    # Create output folder if it doesn't exist
+    os.makedirs(new_path, exist_ok=True)
+
     return image_output_path
