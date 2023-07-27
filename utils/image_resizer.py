@@ -13,5 +13,9 @@ def resize_image(image_path, required_width):
         resized_image = image_pil.resize((required_width, required_height), Image.LANCZOS)
     else:
         resized_image = image_pil
-        
-    return resized_image
+
+    # Remove image metadata
+    image_info = resized_image.info.copy()
+    image_info.pop("exif", None)
+
+    return resized_image, image_info
